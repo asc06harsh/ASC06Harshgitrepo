@@ -1,0 +1,103 @@
+<nav class="navbar navbar-light bg-gradient-primary">
+    <div class="container-fluid">
+        <h2 class="navbar-brand text-white">TravelMate</h2>
+        <div class="d-flex">
+            <button (click)="clickAddCab()" class="btn btn-primary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="bi bi-plus-circle"></i> Add Cab
+            </button>
+            <button (click)="LogOut()" class="btn btn-danger btn-lg ms-3" type="button">
+                <i class="bi bi-box-arrow-right"></i> Log Out
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="container p-5 mb-4 bg-light rounded-3">
+    <h1 class="display-4 text-primary fw-bold text-center animate__animated animate__fadeInUp">Cab Records</h1>
+    <p class="col-md-8 fs-4 text-secondary text-center animate__animated animate__fadeIn animate__delay-1s">You can save records of cabs here.</p>
+    <div class="d-flex justify-content-center mt-4">
+        <input type="text" class="form-control w-50 shadow-sm" placeholder="Search by Cab Model" [(ngModel)]="searchTerm" (input)="filterData()" />
+    </div>
+</div>
+
+<table class="table table-hover mt-4">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">Cab Id</th>
+            <th scope="col">Model</th>
+            <th scope="col">License Plate</th>
+            <th scope="col">Capacity</th>
+            <th scope="col">Price per Day</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of filteredCabData" class="animate__animated animate__fadeIn">
+            <td>{{ data.id }}</td>
+            <td>{{ data.model }}</td>
+            <td>{{ data.licensePlate }}</td>
+            <td>{{ data.capacity }}</td>
+            <td>{{ data.pricePerDay }}</td>
+            <td>
+                <button (click)="onEditCab(data)" class="btn btn-info text-white shadow-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="bi bi-pencil"></i> Edit
+                </button>
+                &nbsp;
+                <button (click)="deleteCab(data.id)" class="btn btn-danger text-white shadow-sm">
+                    <i class="bi bi-trash"></i> Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Cab Records</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-light">
+                <form [formGroup]="formValue">
+                    <div class="mb-3">
+                        <label class="form-label">Cab Model</label>
+                        <input type="text" class="form-control" formControlName="model" placeholder="Cab Model">
+                        <div *ngIf="formValue.get('model')?.invalid && formValue.get('model')?.touched" class="text-danger">
+                            Cab Model is required (Min 3 characters).
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">License Plate</label>
+                        <input type="text" class="form-control" formControlName="licensePlate" placeholder="License Plate">
+                        <div *ngIf="formValue.get('licensePlate')?.invalid && formValue.get('licensePlate')?.touched" class="text-danger">
+                            License Plate is required (Alphanumeric only).
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Capacity</label>
+                        <input type="number" class="form-control" formControlName="capacity" placeholder="Capacity">
+                        <div *ngIf="formValue.get('capacity')?.invalid && formValue.get('capacity')?.touched" class="text-danger">
+                            Capacity must be between 1 and 20.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price per Day</label>
+                        <input type="number" class="form-control" formControlName="pricePerDay" placeholder="Price per Day">
+                        <div *ngIf="formValue.get('pricePerDay')?.invalid && formValue.get('pricePerDay')?.touched" class="text-danger">
+                            Price per Day must be positive.
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #closeButton>Close</button>
+                <button *ngIf="showAdd" type="button" class="btn btn-primary" [disabled]="formValue.invalid" (click)="addCab()">Add Details</button>
+                <button *ngIf="showBtn" type="button" class="btn btn-warning" [disabled]="formValue.invalid" (click)="updateCab()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+

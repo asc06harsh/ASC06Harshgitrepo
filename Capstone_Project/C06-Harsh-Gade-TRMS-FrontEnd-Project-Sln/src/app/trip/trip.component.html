@@ -1,0 +1,101 @@
+<nav class="navbar navbar-light bg-gradient-primary">
+    <div class="container-fluid">
+        <h2 class="navbar-brand text-white">TravelMate</h2>
+        <div class="d-flex">
+            <button (click)="clickAddTrip()" class="btn btn-primary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="bi bi-plus-circle"></i> Add Trip
+            </button>
+            <button (click)="LogOut()" class="btn btn-danger btn-lg ms-3" type="button">
+                <i class="bi bi-box-arrow-right"></i> Log Out
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="container p-5 mb-4 bg-light rounded-3">
+    <h1 class="display-4 text-primary fw-bold text-center animate__animated animate__fadeInUp">Trip Records</h1>
+    <p class="col-md-8 fs-4 text-secondary text-center animate__animated animate__fadeIn animate__delay-1s">You can save records of trips here.</p>
+    <div class="d-flex justify-content-center mt-4">
+        <input type="text" class="form-control w-50 shadow-sm" placeholder="Search by Trip Name" [(ngModel)]="searchTerm" (input)="filterData()" />
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div *ngFor="let data of filteredTripData" class="col animate__animated animate__fadeIn">
+        <div class="card shadow-sm h-100">
+            <img [src]="'assets/images/' + data.image" class="card-img-top" alt="Trip Image" style="height: 250px; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title text-primary">{{ data.name }}</h5>
+                <p class="card-text"><strong>Trip Id:</strong> {{ data.id }}</p>
+                <p class="card-text"><strong>Start Date:</strong> {{ data.startDate }}</p>
+                <p class="card-text"><strong>End Date:</strong> {{ data.endDate }}</p>
+                <p class="card-text"><strong>Price:</strong> ${{ data.price }}</p>
+                <div class="d-flex justify-content-between">
+                    <button (click)="onEditTrip(data)" class="btn btn-info text-white shadow-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="bi bi-pencil"></i> Edit
+                    </button>
+                    <button (click)="deleteTrip(data.id)" class="btn btn-danger text-white shadow-sm">
+                        <i class="bi bi-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Trip Records</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-light">
+                <form [formGroup]="formValue">
+                    <div class="mb-3">
+                        <label class="form-label">Trip Name</label>
+                        <input type="text" class="form-control" formControlName="name" placeholder="Trip Name">
+                        <div *ngIf="formValue.get('name')?.touched && formValue.get('name')?.invalid" class="text-danger">
+                            <small *ngIf="formValue.get('name')?.hasError('required')">Trip Name is required.</small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Start Date</label>
+                        <input type="date" class="form-control" formControlName="startDate">
+                        <div *ngIf="formValue.get('startDate')?.touched && formValue.get('startDate')?.invalid" class="text-danger">
+                            <small *ngIf="formValue.get('startDate')?.hasError('required')">Start Date is required.</small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">End Date</label>
+                        <input type="date" class="form-control" formControlName="endDate">
+                        <div *ngIf="formValue.get('endDate')?.touched && formValue.get('endDate')?.invalid" class="text-danger">
+                            <small *ngIf="formValue.get('endDate')?.hasError('required')">End Date is required.</small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="number" class="form-control" formControlName="price" placeholder="Price">
+                        <div *ngIf="formValue.get('price')?.touched && formValue.get('price')?.invalid" class="text-danger">
+                            <small *ngIf="formValue.get('price')?.hasError('required')">Price is required.</small>
+                            <small *ngIf="formValue.get('price')?.hasError('min')">Price must be greater than zero.</small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Upload Image</label>
+                        <input type="file" (change)="onFileSelected($event)" class="form-control">
+                        <div *ngIf="formValue.get('image')?.touched && !selectedFile" class="text-danger">
+                            <small>Please upload an image.</small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #closeButton>Close</button>
+                <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addTrip()">Add Details</button>
+                <button *ngIf="showBtn" type="button" class="btn btn-warning" (click)="updateTrip()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

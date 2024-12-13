@@ -1,0 +1,118 @@
+{
+  "signup": [
+    {
+      "name": "arayan hotel 1",
+      "email": "sibashish@abc.com",
+      "mobile": 8769145511,
+      "password": "password@123",
+      "id": "1"
+    },
+    {
+      "name": "Selection",
+      "email": "selection@abc.com",
+      "mobile": 3164631649,
+      "password": "passowrd@123",
+      "id": "2"
+    },
+    {
+      "name": "Test",
+      "email": "test@test.com",
+      "mobile": 9876543210,
+      "password": "test@2023",
+      "id": "3"
+    },
+    {
+      "id": "76b7",
+      "name": "scofield",
+      "email": "scofield@gmail.com",
+      "mobile": 12345,
+      "password": "1234"
+    },
+    {
+      "id": "5a14",
+      "name": "scofield",
+      "email": "scofield@gmail.com",
+      "mobile": 613487,
+      "password": "1234"
+    },
+    {
+      "id": "9fad",
+      "name": "scofiled",
+      "email": "scofield@gmail.com",
+      "mobile": 123456,
+      "password": "1234"
+    },
+    {
+      "id": "6387",
+      "name": "Michael",
+      "email": "scofield@gmail.com",
+      "mobile": 9307637429,
+      "password": "123456"
+    },
+    {
+      "id": "f52b",
+      "name": "harsh",
+      "email": "harsh.gade@ascenom",
+      "mobile": 9307637429,
+      "password": "123456"
+    },
+    {
+      "id": "a79b",
+      "name": "Rohiy",
+      "email": "harsh.gade@ascenom",
+      "mobile": 9989897656,
+      "password": "123456"
+    },
+    {
+      "id": "fdbb",
+      "name": "harsh",
+      "email": "harsh.gade@ascenom",
+      "mobile": 9307637429,
+      "password": "123456"
+    },
+    {
+      "id": "6a93",
+      "name": "harsh ",
+      "email": "harsh.gade@ascenom",
+      "mobile": 1246809746,
+      "password": "123456"
+    },
+    {
+      "id": "10c6",
+      "name": "harsh",
+      "email": "harsh.gade@ascenom",
+      "mobile": 9307637429,
+      "password": "123456"
+    },
+    {
+      "id": "fc3f",
+      "name": "scofield",
+      "email": "harsh.gade@gmail.com",
+      "mobile": 8087006852,
+      "password": "123456"
+    },
+    {
+      "id": "fcfa",
+      "name": "harsh",
+      "email": "harshgade47@gmail.com",
+      "mobile": 8087006852,
+      "password": "123456"
+    },
+    {
+      "id": "00e5",
+      "name": "harsh",
+      "email": "harsh.gade@ascendion.com",
+      "mobile": 9307637429,
+      "password": "Harsh@o07"
+    }
+  ],
+  "trips": [
+    {
+      "id": "4eb4",
+      "name": "manali",
+      "startDate": "2024-12-05",
+      "endDate": "2024-12-20",
+      "price": 325425
+    }
+  ]
+}

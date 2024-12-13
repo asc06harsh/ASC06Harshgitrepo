@@ -1,0 +1,34 @@
+<div class="container">
+    <form [formGroup]="addIssueForm">
+        <div class="form-group">
+ 
+            <label for="issueid">Issue-ID</label>
+            <input type="text" formControlName="issue_id" id="issue_id" class="form-control" />
+ 
+            <label for="title">Title</label>
+            <input type="text" formControlName="title" id="title" class="form-control" />
+ 
+            <label for="description">Description</label>
+            <input type="text" formControlName="description" id="description" class="form-control" />
+ 
+            <label for="priority">Priority</label>
+            <input type="text" formControlName="priority" id="priority" class="form-control" />
+ 
+            <label for="status">Status</label>
+            <input type="text" formControlName="status" id="status" class="form-control" />
+ 
+            <label for="assign">Assign</label>
+            <input type="text" formControlName="assignee" id="assignee" class="form-control" />
+ 
+            <label for="date">Date</label>
+            <input type="date" formControlName="date" id="date" class="form-control" />
+issue_id     <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-block" (click)="onSubmit()">Add Issue</button>
+            </div><br>
+            <div class="d-grid">
+                <button type="reset" class="btn btn-primary btn-block">Clear</button>
+            </div>
+        </div>
+    </form>
+</div>
+

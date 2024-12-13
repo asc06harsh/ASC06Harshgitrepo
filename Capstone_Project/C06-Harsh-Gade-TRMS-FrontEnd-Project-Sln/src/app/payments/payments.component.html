@@ -1,0 +1,83 @@
+<nav class="navbar navbar-light bg-gradient-primary">
+    <div class="container-fluid">
+        <h2 class="navbar-brand text-white">TravelMate</h2>
+        <div class="d-flex">
+            <button (click)="clickAddPayment()" class="btn btn-primary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                <i class="bi bi-plus-circle"></i> Add Payment
+            </button>
+            <button (click)="LogOut()" class="btn btn-danger btn-lg ms-3" type="button">
+                <i class="bi bi-box-arrow-right"></i> Log Out
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="container p-5 mb-4 bg-light rounded-3">
+    <h1 class="display-4 text-primary fw-bold text-center animate__animated animate__fadeInUp">Payment Records</h1>
+    <p class="col-md-8 fs-4 text-secondary text-center animate__animated animate__fadeIn animate__delay-1s">Manage all your payment details here.</p>
+    <div class="d-flex justify-content-center mt-4">
+        <input type="text" class="form-control w-50 shadow-sm" placeholder="Search by Payment Description" [(ngModel)]="searchTerm" (input)="filterData()" />
+    </div>
+</div>
+
+<table class="table table-hover mt-4">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">Payment Id</th>
+            <th scope="col">Description</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of filteredPaymentData" class="animate__animated animate__fadeIn">
+            <td>{{ data.id }}</td>
+            <td>{{ data.description }}</td>
+            <td>{{ data.amount }}</td>
+            <td>{{ data.date }}</td>
+            <td>
+                <button (click)="onEditPayment(data)" class="btn btn-info text-white shadow-sm" type="button" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                    <i class="bi bi-pencil"></i> Edit
+                </button>
+                &nbsp;
+                <button (click)="deletePayment(data.id)" class="btn btn-danger text-white shadow-sm">
+                    <i class="bi bi-trash"></i> Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white" id="paymentModalLabel">Payment Records</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-light">
+                <form [formGroup]="formValue">
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <input type="text" class="form-control" formControlName="description" placeholder="Payment Description">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Amount</label>
+                        <input type="number" class="form-control" formControlName="amount" placeholder="Amount">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date</label>
+                        <input type="date" class="form-control" formControlName="date">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #closeButton>Close</button>
+                <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addPayment()">Add Details</button>
+                <button *ngIf="showBtn" type="button" class="btn btn-warning" (click)="updatePayment()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

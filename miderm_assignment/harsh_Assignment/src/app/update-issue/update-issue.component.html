@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow-lg border-0 rounded p-4">
+          <h2 class="text-center text-primary mb-4">Update Issues</h2>
+          <form (ngSubmit)="updateIssues()">
+            
+            <div class="form-group">
+              <label for="id" class="font-weight-bold text-secondary">Issue ID</label>
+              <input type="text" class="form-control form-control-lg" [(ngModel)]="issue.issue_id" name="id" required placeholder="Enter Issue ID" />
+            </div>
+            
+            <div class="form-group">
+              <label for="name" class="font-weight-bold text-secondary">Title </label>
+              <input type="text" class="form-control form-control-lg" [(ngModel)]="issue.title" name="name" required placeholder="Enter Title" />
+            </div>
+            
+            <div class="form-group">
+              <label for="salary" class="font-weight-bold text-secondary">Description</label>
+              <input type="text" class="form-control form-control-lg" [(ngModel)]="issue.description" name="salary" required placeholder="Enter Description" />
+            </div>
+            <div class="form-group">
+                <label for="salary" class="font-weight-bold text-secondary">Priority</label>
+                <input type="text" class="form-control form-control-lg" [(ngModel)]="issue.priority" name="priority" required placeholder="Enter Priority" />
+              </div>
+
+              <div class="form-group">
+                <label for="salary" class="font-weight-bold text-secondary">Status</label>
+                <input type="text" class="form-control form-control-lg" [(ngModel)]="issue.status" name="status" required placeholder="Enter Status" />
+              </div>
+              
+              <div class="form-group">
+                <label for="salary" class="font-weight-bold text-secondary">Assignee</label>
+                <input type="text" class="form-control form-control-lg" [(ngModel)]="issue.assignee" name="assignee" required placeholder="Enter Assignee" />
+              </div>
+
+              <div class="form-group">
+                <label for="salary" class="font-weight-bold text-secondary">Date</label>
+                <input type="text" class="form-control form-control-lg" [(ngModel)]="issue.date" name="date" required placeholder="Enter Date" />
+              </div>
+            
+            <button type="submit" class="btn btn-primary btn-block py-2 mt-3"  (click)="onSubmit()">Update Issues</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+

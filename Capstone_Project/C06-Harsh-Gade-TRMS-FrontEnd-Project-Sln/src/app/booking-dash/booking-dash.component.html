@@ -1,0 +1,39 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2 class="sidebar-title">Manage Your Bookings</h2>
+    <div class="menu-options">
+
+      <div class="menu-item" [class.active]="selectedMenu === 'trip'" (click)="navigateTo('trip')">
+        <i class="fas fa-route menu-icon"></i>
+        <span>Trip</span>
+      </div>
+
+      <div class="menu-item" [class.active]="selectedMenu === 'cab'" (click)="navigateTo('cab')">
+        <i class="fas fa-car menu-icon"></i>
+        <span>Cab</span>
+      </div>
+
+      <div class="menu-item" [class.active]="selectedMenu === 'payments'" (click)="navigateTo('payments')">
+        <i class="fas fa-credit-card menu-icon"></i>
+        <span>Payments</span>
+      </div>
+
+      <div class="menu-item" [class.active]="selectedMenu === 'feedback'" (click)="navigateTo('feedback')">
+        <i class="fas fa-comment-dots menu-icon"></i>
+        <span>Feedback</span>
+      </div>
+
+      <div class="menu-item" [class.active]="selectedMenu === 'bookingcombined'" (click)="navigateTo('bookingcombined')">
+        <i class="fas fa-bookmark menu-icon"></i>
+        <span>Booking Records</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

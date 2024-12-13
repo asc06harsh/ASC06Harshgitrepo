@@ -1,0 +1,16 @@
+<!-- gallery.component.html -->
+<div class="gallery-container">
+    <h2 class="gallery-heading">Gallery</h2>
+    <div class="gallery">
+      <div class="gallery-item" *ngFor="let place of places">
+        <div class="image-container">
+          <img [src]="place.image" [alt]="place.name" class="gallery-image" />
+          <div class="overlay">
+            <h3>{{ place.name }}</h3>
+            <p>{{ place.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

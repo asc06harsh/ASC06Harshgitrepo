@@ -1,0 +1,77 @@
+<nav class="navbar navbar-light bg-gradient-primary">
+    <div class="container-fluid">
+        <h2 class="navbar-brand text-white">TravelMate</h2>
+        <div class="d-flex">
+            <button (click)="clickAddFeedback()" class="btn btn-primary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <i class="bi bi-chat-left-dots"></i> Add Feedback
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="container p-5 mb-4 bg-light rounded-3">
+    <h1 class="display-4 text-primary fw-bold text-center animate__animated animate__fadeInUp">Feedback</h1>
+    <p class="col-md-8 fs-4 text-secondary text-center animate__animated animate__fadeIn animate__delay-1s">We value your feedback!</p>
+</div>
+
+<table class="table table-hover mt-4">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">Feedback Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Message</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let feedback of feedbackData" class="animate__animated animate__fadeIn">
+            <td>{{ feedback.id }}</td>
+            <td>{{ feedback.name }}</td>
+            <td>{{ feedback.email }}</td>
+            <td>{{ feedback.message }}</td>
+            <td>
+                <button (click)="onEditFeedback(feedback)" class="btn btn-info text-white shadow-sm" type="button" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                    <i class="bi bi-pencil"></i> Edit
+                </button>
+                &nbsp;
+                <button (click)="deleteFeedback(feedback.id)" class="btn btn-danger text-white shadow-sm">
+                    <i class="bi bi-trash"></i> Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Feedback Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white" id="feedbackModalLabel">Feedback</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-light">
+                <form [formGroup]="feedbackForm">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" formControlName="name" placeholder="Your Name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" formControlName="email" placeholder="Your Email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" formControlName="message" placeholder="Your Feedback" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #closeButton>Close</button>
+                <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addFeedback()">Submit Feedback</button>
+                <button *ngIf="showEdit" type="button" class="btn btn-warning" (click)="updateFeedback()">Update Feedback</button>
+            </div>
+        </div>
+    </div>
+</div>

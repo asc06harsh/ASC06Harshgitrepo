@@ -1,0 +1,123 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f4f7;
+  color: #333;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 300px;
+  background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+/* Sidebar Title */
+.sidebar-title {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  color: #fffae6;
+}
+
+/* Menu Options */
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Menu Item Styles */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, padding 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+/* Hover Effects on Menu Item */
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(15px) scale(1.05);
+  color: #ffeb3b; /* Gold color for hover text */
+  padding-left: 30px;
+}
+
+.menu-item:hover i {
+  transform: rotate(20deg);
+}
+
+/* Active Menu Item */
+.menu-item.active {
+  background: #ffffff1a;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  color: #ffeb3b;
+}
+
+.menu-item.active span {
+  color: #ffeb3b;
+}
+
+.menu-item.active i {
+  color: #ffeb3b;
+}
+
+/* Main Content Styles */
+.content {
+  flex: 1;
+  margin-left: 300px;
+  padding: 20px;
+  background: #f9f9f9;
+  overflow-y: auto;
+  border-radius: 10px;
+  transition: margin-left 0.3s ease, background-color 0.3s ease;
+  color: #333;
+}
+
+/* Sidebar Hover Effects */
+.sidebar:hover {
+  box-shadow: 2px 0 25px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to bottom right, #2575fc, #6a11cb);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: relative;
+    height: auto;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+}
+
